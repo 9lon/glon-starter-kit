@@ -1,0 +1,19 @@
+<link rel="import" href="main/main-card.html">
+<dom-module id="app-main">
+
+  <template>
+    <main-card></main-card>
+  </template>
+
+  <script>
+    Polymer({
+      is:'app-main',
+      behaviors:[nxCoreBehavior],
+      created:function(){
+        this.nxSetTitle('main');
+        this.nxSetLayout('layout-main');
+      }
+    });
+
+  </script>
+</dom-module>

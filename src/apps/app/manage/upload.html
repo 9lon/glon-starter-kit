@@ -1,0 +1,122 @@
+<dom-module id="manage-upload">
+  <style is="custom-style">
+  .upload::-webkit-file-upload-button {
+    visibility: hidden;
+  }
+  .upload::before {
+    content: 'คลิกเพื่ออัพโหลดไฟล์';
+    display: inline-block;
+    background: -webkit-linear-gradient(top, #f9f9f9, #e3e3e3);
+    /*border: 1px solid #999;*/
+    border-radius: 3px;
+    padding: 35%;
+    outline: none;
+    white-space: nowrap;
+    -webkit-user-select: none;
+    cursor: pointer;
+    text-shadow: 1px 1px #fff;
+    font-weight: 700;
+    font-size: 10pt;
+    /*margin-left: 20px;*/
+  }
+  .upload:hover::before {
+    border-color: black;
+  }
+  .upload:active::before {
+    background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
+  }
+  .dropzone{
+     @apply(--layout-vertical);
+    @apply(--layout-wrap);  
+    padding:20px;
+  }
+  .zone{
+    background-color:#ccc;
+    height:100px;
+  }
+      #dropSelect{
+          display: none;
+      }
+  </style>
+  <template>
+<!--
+    <paper-card heading="Emmental" image="http://placehold.it/350x150/FFC107/000000" alt="Emmental">
+  <div class="card-content">
+    Emmentaler or Emmental is a yellow, medium-hard cheese that originated in the area around Emmental, Switzerland. It is one of the cheeses of Switzerland, and is sometimes known as Swiss cheese.
+  </div>
+  <div class="card-actions">
+    <paper-button>Share</paper-button>
+    <paper-button>Explore!</paper-button>
+  </div>
+</paper-card>
+     
+-->
+     
+    <div id="dropzone" class="content dropzone">
+        <paper-card  heading="Drop file">
+            <div class="card-content">
+              <div class="zone">
+              </div>
+                 <!--<div id="dropzone" class="">
+                      <paper-menu multi>
+                         <template is="dom-repeat" items="{{files}}">
+                            <paper-item>{{item.name}}</paper-item>
+                         </template>
+                     </paper-menu>
+                  </div>-->
+            </div>
+            <div class="card-actions">
+                <paper-button on-tap="_openSelect"><iron-icon icon="file-upload"></iron-icon>Upload</paper-button>
+                <input id="dropSelect" type="file" id="input" multiple>
+            </div>
+        </paper-card> 
+    </div>
+   
+    
+  </template>
+
+  <script>
+    Polymer({
+      is: "manage-upload",
+      properties:{
+        files:{
+          type:Object,
+          value:function(){
+            return [];
+          },
+          notify:true
+        }
+      },
+      ready:function(){
+        this.testza = this;
+        var dropzone = this.$.dropzone;
+        dropzone.ondragover = dropzone.ondragenter = function(event) {
+          event.stopPropagation();
+          event.preventDefault();
+        }
+        var rootDom = this;
+        dropzone.ondrop = function(event){
+          event.stopPropagation();
+          event.preventDefault();
+
+          var files = event.dataTransfer.files;
+          for (var i=0; i<files.length; i++) {
+            console.log(files[i]);
+            rootDom.push('files',files[i]);
+          }
+        }
+        this.$.dropSelect.onchange = function(){
+          var files = this.files;
+          for (var i = 0; i < files.length; i++) {
+            console.log(files[i]);
+            rootDom.push('files',files[i]);
+          }
+        }
+      },
+        _openSelect:function(){
+            //alert('ff');
+            this.$.dropSelect.click();
+        }
+    });
+  </script>
+</dom-module>

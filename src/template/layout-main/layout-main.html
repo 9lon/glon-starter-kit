@@ -1,0 +1,52 @@
+<link rel="import" href="main/my-footer.html">
+<dom-module id="layout-main">
+  <style include="iron-flex iron-flex-alignment">
+  .main{
+      position: relative;
+      padding: 10px 10px 10px 10px;
+      /*min-height: 90%;*/
+      height: auto !important;
+      /*margin-bottom: 60px;*/
+   }
+   .change{
+     padding-bottom: 3em;
+     /*background-color: red;*/
+   }
+  </style>
+  <template>
+
+
+      <paper-drawer-panel drawer-width="0px">
+        <paper-header-panel main>
+          <paper-toolbar>
+            <paper-icon-button icon="menu" paper-drawer-toggle></paper-icon-button>
+            <div>Navigation Bar</div>
+          </paper-toolbar>
+          <div class="layout vertical">
+            <div class="main">
+              <div class="change">
+                <tag-page-load ></tag-page-load>
+              </div>
+
+            </div>
+          <my-footer class="footer"></my-footer>
+          </div>
+        </paper-header-panel>
+      </paper-drawer-panel>
+
+  </template>
+  <script>
+    Polymer({
+      is:'layout-main',
+      behaviors:[nxTemplateBehavior,nxLocalesBehavior],
+      changeLanguage:function(){
+        if(this.language == 'th'){
+          this.nxSwitchLanguage('en');
+        }else{
+          this.nxSwitchLanguage('th');
+        }
+      }
+    });
+  </script>
+
+</dom-module>

@@ -1,0 +1,55 @@
+<link rel="import" href="panel-seleted-animated.html">
+<link rel="import" href="../../../../../bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../../../../../bower_components/iron-pages/iron-pages.html">
+<link rel="import" href="../../../../../bower_components/paper-toolbar/paper-toolbar.html">
+<link rel="import" href="../../../../../bower_components/paper-tabs/paper-tab.html">
+<link rel="import" href="../../../../../bower_components/paper-tabs/paper-tabs.html">
+
+<dom-module id="panel-seleted">
+
+  <style>
+    paper-tabs{
+      /*width: 300px;*/
+      /*margin-left: 100px;*/
+      background-color: var(--paper-orange-300);
+      color: #fff;
+    }
+  </style>
+
+    <template>
+      <paper-tabs selected="{{selected}}" align-bottom>
+        <paper-tab>รายละเอียด</paper-tab>
+        <paper-tab>อัปโหลดไฟล์</paper-tab>
+        <paper-tab>ออกรายงาน</paper-tab>
+        <paper-tab>ประวัติการใชเงาน</paper-tab>
+      </paper-tabs>
+
+
+      <neon-animated-pages selected="{{selected}}">
+        <panel-seleted-animated>
+          <content select="section-content[name=data]"></content>
+        </panel-seleted-animated>
+        <panel-seleted-animated>
+          <content select="section-content[name=upload]"></content>
+        </panel-seleted-animated>
+        <panel-seleted-animated>
+          <content select="section-content[name=report]"></content>
+        </panel-seleted-animated>
+        <panel-seleted-animated>
+          <content select="section-content[name=history]"></content>
+        </panel-seleted-animated>
+      </neon-animated-pages>
+
+    </template>
+    <script>
+        Polymer({
+            is:'panel-seleted',
+            properties: {
+              selected: {
+                type: String,
+                value: 0
+              }
+            }
+        });
+    </script>
+</dom-module>

@@ -1,0 +1,25 @@
+<!-- gl search -->
+ <link rel="import" href="components/gl-search/gl-search.html">
+<!-- gl table-->
+ <link rel="import" href="components/gl-table/gl-table-body.html">
+ <link rel="import" href="components/gl-table/gl-table-head.html">
+ <link rel="import" href="components/gl-table/gl-table.html">
+  <dom-module id="app-detail">
+
+  <template>
+    <gl-search></gl-search>
+    <gl-table></gl-table>
+  </template>
+    
+  <script>
+    Polymer({
+      is:'app-detail',
+      behaviors:[nxCoreBehavior],
+      created:function(){
+        this.nxSetTitle('detail');
+        this.nxSetLayout('layout-main');
+      }
+    });
+
+  </script>
+</dom-module>

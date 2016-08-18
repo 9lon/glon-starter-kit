@@ -1,0 +1,59 @@
+<link rel="import" href="manage/panel-seleted/panel-seleted.html">
+
+<link rel="import" href="manage/history.html">
+<link rel="import" href="manage/print.html">
+
+<link rel="import" href="manage/page-upload.html">
+
+<dom-module id="app-manage">
+  <style media="screen">
+  paper-tabs{
+    background-color: var(--paper-orange-300);
+    color: #fff;
+  }
+  </style>
+  <template>
+    <nx-param params="{{getParam}}" pattern="tab"></nx-param>
+    <paper-tabs selected="{{tab}}">
+      <paper-tab on-tap="changeUrl" data="0">ข้อมูล</paper-tab>
+      <paper-tab on-tap="changeUrl" data="1">อัปโหลด</paper-tab>
+      <paper-tab on-tap="changeUrl" data="2">รายงาน</paper-tab>
+      <paper-tab on-tap="changeUrl" data="3">ประวัติการใช้งาน</paper-tab>
+    </paper-tabs>
+    <iron-pages selected="{{tab}}">
+      <gl-table></gl-table>
+      <page-upload></page-upload>
+      <manage-print></manage-print>
+      <manage-history></manage-history>
+    </iron-pages>
+  </template>
+  <script>
+    Polymer({
+      is:'app-manage',
+      behaviors:[nxCoreBehavior],
+      created:function(){
+        this.nxSetTitle('manage');
+        this.nxSetLayout('layout-main');
+      },
+      observers:['obTab(getParam.tab)'],
+      properties: {
+        selected: {
+          type: Number,
+          value:0
+        }
+      },
+      obTab:function(data){
+        if(typeof data == "undefined"){
+          this.tab = 0;
+        }else{
+          this.tab = data;
+        }
+      },
+      changeUrl:function(e){
+        this.nxChangePath('/app/manage/'+e.target.getAttribute('data'));
+        this.tab = e.target.getAttribute('data');
+      }
+    });
+
+  </script>
+</dom-module>

@@ -1,0 +1,63 @@
+<link rel="import" href="upload.html">
+<link rel="import" href="../components/gl-table/gl-table.html">
+
+<dom-module id="page-upload">
+    <style is="custom-style">
+      .flex-horizontal {
+        @apply(--layout-horizontal);
+      }
+      .flexchild {
+        @apply(--layout-flex);
+      }
+      paper-button.save {
+        background-color: var(--paper-indigo-500);
+        color: white;
+        --paper-button-raised-keyboard-focus: {
+          background-color: var(--paper-white-a200) !important;
+          color: white !important;
+        };
+      }
+      paper-button.cancel {
+        background-color: var(--paper-red-500);
+        color: white;
+        --paper-button-raised-keyboard-focus: {
+          background-color: var(--paper-white-a200) !important;
+          color: white !important;
+        };
+      }       
+      .container{
+        padding: 5px;
+      }    
+  </style>
+  <template>
+    <manage-upload files="{{getFiles}}"></manage-upload>
+    <template is="dom-if" if="{{uploaded}}">
+        <div class="container">
+            <gl-table></gl-table>
+        </div>
+        <div class="container flex-horizontal">
+          <div class="flexchild"></div>
+          <div class="container"><paper-button raised class="custom save">Save</paper-button></div>
+          <div class="container"><paper-button raised class="custom cancel">Cancel</paper-button></div>
+        </div>
+    </template>
+  </template>
+
+  <script>
+    Polymer({
+      is: "page-upload",
+      observers:['_checkGetFiles(getFiles.*)'],
+      properties:{
+          uploaded:{
+              type:Boolean,
+              value:false
+          }
+      },
+      _checkGetFiles:function(data){
+          if(data.value.length!=0){
+              this.uploaded = true;
+          }
+      }
+    });
+  </script>
+</dom-module>
