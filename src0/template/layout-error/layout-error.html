@@ -9,7 +9,7 @@
   <script>
     Polymer({
       is:'layout-error',
-      behaviors:[gl.behavior.template,gl.behavior.locales],
+      behaviors:[nxTemplateBehavior,nxLocalesBehavior],
       changeLanguage:function(){
         if(this.language == 'th'){
           this.nxSwitchLanguage('en');

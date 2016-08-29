@@ -9,10 +9,10 @@
         }
       },
       behaviors: [
-        gl.behavior.core
+        nxCoreBehavior
       ],
       created:function(){
-        this.glQuery('myData',this);
+        this.nxSetGlobalElement('myData');
       }
     });
   </script>

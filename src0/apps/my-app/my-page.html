@@ -8,10 +8,10 @@
   <script>
     Polymer({
       is:'my-app-my-page',
-      behaviors:[gl.behavior.core],
+      behaviors:[nxCoreBehavior],
       created:function(){
-        this.glSetTitle('my-page');
-        this.glSetLayout('layout-main');
+        this.nxSetTitle('my-page');
+        this.nxSetLayout('layout-main');
       }
     });
 
