@@ -15,6 +15,9 @@
    "manifest.json"
   ],
   "includeDependencies": [
-    "bower_components/webcomponentsjs/webcomponents-lite.min.js"
+    "bower_components/webcomponentsjs/webcomponents-lite.min.js",
+    "bower_components/jwt-decode/build/jwt-decode.min.js",
+    "bower_components/axios/dist/axios.min.map",
+    "bower_components/axios/dist/axios.min.js"
   ]
 }

@@ -16,7 +16,7 @@
     "tests"
   ],
   "dependencies": {
-    "9lon": "^0.2.0",
+    "9lon": "^0.2.2",
     "paper-drawer-panel": "PolymerElements/paper-drawer-panel#^1.0.10",
     "paper-card": "PolymerElements/paper-card#^1.1.2",
     "paper-header-panel": "PolymerElements/paper-header-panel#^1.1.6",
